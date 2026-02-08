@@ -72,12 +72,14 @@
     </div>
 
     <script>
-        // Automatically trigger mailto on page load
+        // Automatically trigger mailto on page load by simulating a click
         window.addEventListener('load', function() {
-            // Small delay to ensure page is fully loaded
             setTimeout(function() {
-                window.location.href = "mailto:beispiel@email.de?subject=Anfrage%20-%20Neue%20Kontaktaufnahme&body=Sehr%20geehrte%20Damen%20und%20Herren%2C%0A%0Aich%20m%C3%B6chte%20gerne%20eine%20Anfrage%20stellen.%0A%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen";
-            }, 500);
+                var button = document.getElementById('ctaButton');
+                if (button) {
+                    button.click();
+                }
+            }, 100);
         });
     </script>
 </body>
