@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anfrage erstellen</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            font-size: 1.25rem;
+            font-weight: 600;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            text-transform: none;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
+        }
+
+        .cta-button:active {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .info-text {
+            color: white;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="mailto:beispiel@email.de?subject=Anfrage%20-%20Neue%20Kontaktaufnahme&body=Sehr%20geehrte%20Damen%20und%20Herren%2C%0A%0Aich%20m%C3%B6chte%20gerne%20eine%20Anfrage%20stellen.%0A%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen" 
+           class="cta-button" 
+           id="ctaButton">
+            jetzt Anfrage erstellen
+        </a>
+        <p class="info-text">Ihr E-Mail-Programm sollte sich automatisch öffnen</p>
+    </div>
+
+    <script>
+        // Automatically trigger mailto on page load
+        window.addEventListener('load', function() {
+            // Small delay to ensure page is fully loaded
+            setTimeout(function() {
+                window.location.href = "mailto:beispiel@email.de?subject=Anfrage%20-%20Neue%20Kontaktaufnahme&body=Sehr%20geehrte%20Damen%20und%20Herren%2C%0A%0Aich%20m%C3%B6chte%20gerne%20eine%20Anfrage%20stellen.%0A%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen";
+            }, 500);
+        });
+    </script>
+</body>
+</html>
