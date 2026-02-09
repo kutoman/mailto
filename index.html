@@ -63,7 +63,7 @@
 </head>
 <body>
     <div class="container">
-        <a href="mailto:wahlbuero@hanau.de?subject=Antrag%20auf%20Briefwahl%20-%20Kommunalwahl%2015.03.2026&body=Sehr%20geehrte%20Damen%20und%20Herren%2C%0A%0Ahiermit%20beantragen%20wir%20Briefwahlunterlagen%20f%C3%BCr%20die%20Kommunalwahl%20am%2015.%20M%C3%A4rz%202026.%0A%0AName%3A%0AGeburtsdatum%3A%0AAnschrift%3A%0A%0AName%3A%0AGeburtsdatum%3A%0AAnschrift%3A%0A%0AName%3A%0AGeburtsdatum%3A%0AAnschrift%3A%0A%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen" 
+        <a href="#" 
            class="cta-button" 
            id="ctaButton">
             jetzt Anfrage erstellen
@@ -72,10 +72,46 @@
     </div>
 
     <script>
+        // Check if URL contains "single" parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const isSingle = urlParams.has('single');
+
+        // Build email body based on mode
+        let emailBody;
+        if (isSingle) {
+            // Single mode: "ich beantrage" with one set of fields
+            emailBody = "Sehr geehrte Damen und Herren,%0A%0A" +
+                       "hiermit beantrage ich Briefwahlunterlagen für die Kommunalwahl am 15. März 2026.%0A%0A" +
+                       "Name:%0A" +
+                       "Geburtsdatum:%0A" +
+                       "Anschrift:%0A%0A" +
+                       "Mit freundlichen Grüßen";
+        } else {
+            // Multiple mode: "wir beantragen" with three sets of fields
+            emailBody = "Sehr geehrte Damen und Herren,%0A%0A" +
+                       "hiermit beantragen wir Briefwahlunterlagen für die Kommunalwahl am 15. März 2026.%0A%0A" +
+                       "Name:%0A" +
+                       "Geburtsdatum:%0A" +
+                       "Anschrift:%0A%0A" +
+                       "Name:%0A" +
+                       "Geburtsdatum:%0A" +
+                       "Anschrift:%0A%0A" +
+                       "Name:%0A" +
+                       "Geburtsdatum:%0A" +
+                       "Anschrift:%0A%0A" +
+                       "Mit freundlichen Grüßen";
+        }
+
+        // Build complete mailto URL
+        const mailtoUrl = "mailto:wahlbuero@hanau.de?subject=Antrag%20auf%20Briefwahl%20-%20Kommunalwahl%2015.03.2026&body=" + emailBody;
+
+        // Set the href for the button
+        const button = document.getElementById('ctaButton');
+        button.href = mailtoUrl;
+
         // Automatically trigger mailto on page load by simulating a click
         window.addEventListener('load', function() {
             setTimeout(function() {
-                var button = document.getElementById('ctaButton');
                 if (button) {
                     button.click();
                 }
